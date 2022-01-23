@@ -10,13 +10,13 @@ Emoji.GetMaterial("thumbsup", "twitter", 64, math.random(0, 6), function(mat)
     end)
 end)
 ```
-`string`: emoji name
+`string`: emoji name  
 > +1, thumbsup, joy, ok_hand, smile, e.t.c
-`string`: provider
+`string`: provider  
 > twitter, google, apple, facebook
-`number`: size
+`number`: size  
 > 64, 72, 96, e.t.c - use 64 if you didnt know whats sizes avaiable for this provider  
-`number`: skinTone (optional)
+`number`: skinTone (optional)  
 ###### skin-tones preview will be here a bit later
 `function(material)`: callback  
 `number`: retryCount (optional)
