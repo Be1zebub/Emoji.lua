@@ -45,4 +45,11 @@ end, math.random(0, 6))
 | skinTone | number | ✔ |
 | retryCount | number | ✔ |
 
+### Skin-tones preview
 ![skin-tones Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/skinTonesPreview.png)
+*you can also mix skin-tones of some emojis*
+*example:*
+```lua
+Emoji.SetMaterial("couple", "twitter", 64, 8)
+```
+![skin-tones mix preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/twitter-64/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.png)
