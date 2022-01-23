@@ -50,7 +50,8 @@ function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
 	local path = Emoji.GetPath(emoji)
 
 	if file.Exists(path) then
-		return cback(path)
+		cback(path)
+		return path
 	end
 
 	local function download(isRetry)
@@ -73,13 +74,34 @@ function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
 	end
 
 	download()
+	return path
+end
+
+-- same args as in Emoji.Get
+function Emoji.IsDownloaded(name, provider, size, skinTone)
+	local emoji, dir = Emoji.Get(name, provider, size, skinTone)
+	return file.Exists(Emoji.GetPath(emoji))
 end
 
 -- same args as in Emoji.Download
 function Emoji.GetMaterial(name, provider, size, skinTone, cback, retry_count)
-	Emoji.Download(name, provider, size, skinTone, function(path)
+	return Emoji.Download(name, provider, size, skinTone, function(path)
 		cback(Material(path))
 	end, retry_count)
+end
+
+local downloading = {}
+function Emoji.Render(x, y, name, provider, size, skinTone)
+	if downloading == true then return end
+	downloading = true
+
+	Emoji.GetMaterial(name, provider, size, skinTone, function(mat)
+		downloading = false
+		
+		surface.SetDrawColor(255, 255, 255)
+        surface.SetMaterial(mat)
+        surface.DrawTexturedRect(16, 16, 64, 64)
+	end)
 end
 
 return Emoji
