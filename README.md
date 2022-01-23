@@ -1,6 +1,14 @@
 # Emoji.lua - a way to add emotions in your Gmod UI
 
 ### Emoji.GetMaterial
+| Parameter | Type | Example | Optional |
+|-|-|:-:|
+| name | string | "thumbsup" |
+| provider | string | "twitter" |
+| size | number | 64 |
+| callback | function(material) |
+| skinTone | number | 3 | ✔ |
+| retryCount | number | 2 | ✔ |
 ```lua
 Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     hook.Add("HUDPaint", "Thumbsup-emoji", function()
@@ -10,16 +18,3 @@ Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     end)
 end, math.random(0, 6))
 ```
-`string`: emoji name  
->+1, thumbsup, joy, ok_hand, smile, e.t.c
-
-`string`: provider  
->twitter, google, apple, facebook
-
-`number`: size  
->64, 72, 96, e.t.c - use 64 if you didnt know whats sizes avaiable for this provider
-
-`function(material)`: callback  
-`number`: skinTone (optional)  
-###### skin-tones preview will be here a bit later
-`number`: retryCount (optional)
