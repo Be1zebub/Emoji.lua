@@ -16,3 +16,4 @@ end)
 `number`: skinTone  
 ###### skin-tones preview will be here a bit later
 `function(material)`: callback
+`number`: retryCount (optional)
