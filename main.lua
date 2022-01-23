@@ -96,9 +96,9 @@ function Emoji.Render(x, y, name, provider, size, skinTone)
 	downloading = true
 
 	Emoji.GetMaterial(name, provider, size, skinTone, function(mat)
-		downloading = false
-		
-		surface.SetDrawColor(255, 255, 255)
+	downloading = false
+
+	surface.SetDrawColor(255, 255, 255)
         surface.SetMaterial(mat)
         surface.DrawTexturedRect(16, 16, 64, 64)
 	end)
