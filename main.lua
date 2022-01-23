@@ -74,12 +74,12 @@ function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
 
 		local function download(isRetry)
 			if isRetry then
-		        if retryCount and retryCount > 0 then
-		            retryCount = retryCount - 1
-		            download(true)
-		        end
-		    else
-		    	print("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/" .. upath)
+				if retryCount and retryCount > 0 then
+					retryCount = retryCount - 1
+					download(true)
+				end
+			else
+				print("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/" .. upath)
 				http.Fetch("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/".. upath, function(img, _, _, code)
 					if code ~= 200 or img:find("<!DOCTYPE HTML>", 1, true) then
 						download(true)
@@ -88,7 +88,7 @@ function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
 						cback(path)
 					end
 				end, download)
-		    end
+			end
 		end
 
 		download()
@@ -107,13 +107,41 @@ function Emoji.GetMaterial(name, provider, size, cback, skinTone, retryCount)
 	end, retryCount)
 end
 
+local list, clean = {}, Material("dev/clearalpha")
+function Emoji.SetMaterial(name, provider, size, skinTone, retryCount)
+	local uid = provider .."-"..size .."/".. name
+	if skinTone and skinTone > 1 then
+		uid = uid .. "-".. skinTone
+	end
+
+	if list[uid] == nil then
+		list[uid] = true
+
+		Emoji.Download(name, provider, size, skinTone, function(path)
+			list[uid] = Material("data/".. path)
+		end, retryCount)
+	elseif list[uid] ~= true then
+		surface.SetMaterial(list[uid])
+	else
+		surface.SetMaterial(clean)
+	end
+end
+
+return Emoji
+
 --[[ Examples:
 Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
-    hook.Add("HUDPaint", "Thumbsup-emoji", function()
-        surface.SetDrawColor(255, 255, 255)
-        surface.SetMaterial(mat)
-        surface.DrawTexturedRect(16, 16, 64, 64)
-    en, math.random(0, 6))
+	hook.Add("HUDPaint", "Emoji.png/test1", function()
+		surface.SetDrawColor(255, 255, 255)
+		surface.SetMaterial(mat)
+		surface.DrawTexturedRect(16, 16, 64, 64)
+	en)
+end, math.random(0, 6))
+
+hook.Add("HUDPaint", "Emoji.png/test2", function()
+	surface.SetDrawColor(255, 255, 255)
+	Emoji.SetMaterial("smile", "apple", 64)
+	surface.DrawTexturedRect(16, 96, 64, 64)
 end)
 
 local skins = {}
@@ -124,22 +152,22 @@ for skinTone = 0, 6 do
 end
 
 local skinTone = -1
-timer.Create("Emoji.png/test", 0.25, 0, function()
+timer.Create("Emoji.png/test3", 0.25, 0, function()
 	skinTone = skinTone + 1
 	local mat = skins[skinTone]
 	if mat == nil then skinTone = -1 return end
 
-    local pnl = vgui.Create("EditablePanel")
-    pnl:SetPos(16, 16)
-    pnl:SetSize(72, 72)
-    pnl.Paint = function(me, w, h)
-    	surface.SetDrawColor(255, 255, 255)
-	    surface.SetMaterial(mat)
-	    surface.DrawTexturedRect(0, 0, w, h)	
-    end
-    
-    pnl:SetAlpha(0)
-    pnl:AlphaTo(255, 0.5, 0, function()
+	local pnl = vgui.Create("EditablePanel")
+	pnl:SetPos(16, 16)
+	pnl:SetSize(72, 72)
+	pnl.Paint = function(me, w, h)
+		surface.SetDrawColor(255, 255, 255)
+		surface.SetMaterial(mat)
+		surface.DrawTexturedRect(0, 0, w, h)	
+	end
+	
+	pnl:SetAlpha(0)
+	pnl:AlphaTo(255, 0.5, 0, function()
 		pnl:AlphaTo(0, 0.5, 0, function()
 			pnl:Remove()
 		end)
