@@ -10,8 +10,8 @@ Emoji.GetMaterial("thumbsup", "twitter", 64, 4, function(mat)
     end)
 end)
 ```
-#### `string`: emoji name (+1, thumbsup, e.t.c)
-#### `string`: provider (twitter, google, apple, facebook)
-#### `number`: size (64, 72, 96, e.t.c) - use 64 if you didnt know whats sizes avaiable for this provider
-#### `number`: skinTone
-######skin-tones preview will be here a bit later
+`string`: emoji name (+1, thumbsup, e.t.c)
+`string`: provider (twitter, google, apple, facebook)
+`number`: size (64, 72, 96, e.t.c) - use 64 if you didnt know whats sizes avaiable for this provider
+`number`: skinTone
+####skin-tones preview will be here a bit later
