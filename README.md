@@ -1,12 +1,13 @@
 # Emoji.lua - a way to add emotions in your Gmod UI
 
 ### Emoji.GetMaterial
+
 | Parameter | Type | Example | Optional |
 |-|-|:-:|
-| name | string | "thumbsup" |
-| provider | string | "twitter" |
-| size | number | 64 |
-| callback | function(material) |
+| name | string | "thumbsup" |  |
+| provider | string | "twitter" |  |
+| size | number | 64 |  |
+| callback | function(material) |  |
 | skinTone | number | 3 | ✔ |
 | retryCount | number | 2 | ✔ |
 ```lua
