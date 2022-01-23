@@ -1,11 +1,11 @@
 # Emoji.lua - a way to add emotions in your Gmod UI
 
 #### Features:
-> The entire library is in one short file
-> Content downloading only on request (your players dont need to download a lot of useless emojis that they will never see)
-> Comfy receipt of emojis by name (as in discord / Twitter)
-> Synchronous and asynchronous functions
-> Any combination of skin tones
+> The entire library is in one short file  
+> Content downloading only on request (your players dont need to download a lot of useless emojis that they will never see)  
+> Comfy receipt of emojis by name (as in discord / Twitter)  
+> Synchronous and asynchronous functions  
+> Any combination of skin tones  
 > Various emoji providers with different sizes (Twitter, Facebook, Apple, Google)
 
 ### Emoji.SetMaterial (Sync)
