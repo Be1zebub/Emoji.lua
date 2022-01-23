@@ -16,6 +16,7 @@ end)
 | size | number |  |
 | skinTone | number | ✔ |
 
+
 ### Emoji.GetMaterial (async)
 
 ```lua
