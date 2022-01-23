@@ -11,7 +11,7 @@
 ### Emoji.SetMaterial (Sync)
 
 ```lua
-hook.Add("HUDPaint", "Emoji.png/test/Emoji.SetMaterial", function()
+hook.Add("HUDPaint", "Emoji.lua/test/Emoji.SetMaterial", function()
 	surface.SetDrawColor(255, 255, 255)
 	Emoji.SetMaterial("smile", "apple", 160)
 	surface.DrawTexturedRect(16, 96, 160, 160)
@@ -29,7 +29,7 @@ end)
 
 ```lua
 Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
-    hook.Add("HUDPaint", "Emoji.png/test/Emoji.GetMaterial", function()
+    hook.Add("HUDPaint", "Emoji.lua/test/Emoji.GetMaterial", function()
         surface.SetDrawColor(255, 255, 255)
         surface.SetMaterial(mat)
         surface.DrawTexturedRect(16, 16, 64, 64)
