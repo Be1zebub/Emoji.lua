@@ -19,7 +19,7 @@ end)
 `number`: size  
 >64, 72, 96, e.t.c - use 64 if you didnt know whats sizes avaiable for this provider
 
+`function(material)`: callback  
 `number`: skinTone (optional)  
 ###### skin-tones preview will be here a bit later
-`function(material)`: callback  
 `number`: retryCount (optional)
