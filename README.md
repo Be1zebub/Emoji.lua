@@ -20,7 +20,6 @@ end)
 ### Emoji.GetMaterial (async)
 
 ```lua
-local Emoji = include("lib/emoji.lua")
 Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     hook.Add("HUDPaint", "Emoji.png/test/Emoji.GetMaterial", function()
         surface.SetDrawColor(255, 255, 255)
