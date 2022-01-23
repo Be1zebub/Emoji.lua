@@ -13,7 +13,7 @@ end)
 `string`: emoji name (+1, thumbsup, e.t.c)  
 `string`: provider (twitter, google, apple, facebook)  
 `number`: size (64, 72, 96, e.t.c) - use 64 if you didnt know whats sizes avaiable for this provider  
-`number`: skinTone  
+`number`: skinTone (optional)
 ###### skin-tones preview will be here a bit later
-`function(material)`: callback
+`function(material)`: callback  
 `number`: retryCount (optional)
