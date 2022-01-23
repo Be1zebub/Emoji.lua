@@ -44,3 +44,5 @@ end, math.random(0, 6))
 | callback | function |  |
 | skinTone | number | ✔ |
 | retryCount | number | ✔ |
+
+![skin-tones Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/skinTonesPreview.png)
