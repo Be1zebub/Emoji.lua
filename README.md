@@ -2,13 +2,13 @@
 
 ### Emoji.GetMaterial
 ```lua
-Emoji.GetMaterial("thumbsup", "twitter", 64, math.random(0, 6), function(mat)
+Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     hook.Add("HUDPaint", "Thumbsup-emoji", function()
         surface.SetDrawColor(255, 255, 255)
         surface.SetMaterial(mat)
         surface.DrawTexturedRect(16, 16, 64, 64)
     end)
-end)
+end, math.random(0, 6))
 ```
 `string`: emoji name  
 >+1, thumbsup, joy, ok_hand, smile, e.t.c
