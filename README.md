@@ -12,11 +12,11 @@ Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     end)
 end, math.random(0, 6))
 ```
-| Parameter | Type | Example | Optional |
-|-|-|-|:-:|
-| name | string | "thumbsup" |  |
-| provider | string | "twitter" |  |
-| size | number | 64 |  |
-| callback | function | function(material) DrawMaterial(material) end |  |
-| skinTone | number | 3 | ✔ |
-| retryCount | number | 2 | ✔ |
+| Parameter | Type | Optional |
+|-|-|:-:|
+| name | string |  |
+| provider | string |  |
+| size | number |  |
+| callback | function |  |
+| skinTone | number | ✔ |
+| retryCount | number | ✔ |
