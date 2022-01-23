@@ -3,7 +3,7 @@
 ### Emoji.GetMaterial
 
 | Parameter | Type | Example | Optional |
-|-|-|:-:|
+|-|-|-|:-:|
 | name | string | "thumbsup" |  |
 | provider | string | "twitter" |  |
 | size | number | 64 |  |
