@@ -1,5 +1,6 @@
 local Emoji = {
 	_VERSION = 1.0,
+	_Async   = true,
 	_URL 	 = "https://github.com/Be1zebub/Emoji.lua",
 	_LICENSE = [[
 		MIT LICENSE
@@ -23,85 +24,95 @@ local Emoji = {
 	]]
 }
 
--- string: emoji name (+1, thumbsup, e.t.c)
--- string: provider (twitter, google, apple, facebook)
--- number: size (64, 72, 96, e.t.c) - use 64 if you didnt know whats sizes avaiable for this provider
--- number: skinTone (see skin-tones there: https://github.com/Be1zebub/Emoji.lua/blob/main/skinTones.jpg)
-function Emoji.Get(name, provider, size, skinTone) -- Emoji.GetURL("thumbsup", "twitter", 64)
-	local dir = provider .."-".. size
-	local file =  dir .."/".. name
-	if skinTone then
-		file = file .. "_".. skinTone
+file.CreateDir("emoji.lua/_map")
+file.CreateDir("emoji.lua/apple-64")
+file.CreateDir("emoji.lua/apple-160")
+file.CreateDir("emoji.lua/facebook-64")
+file.CreateDir("emoji.lua/facebook-96")
+file.CreateDir("emoji.lua/google-64")
+file.CreateDir("emoji.lua/google-136")
+file.CreateDir("emoji.lua/twitter-64")
+file.CreateDir("emoji.lua/twitter-72")
+
+local list = {}
+function Emoji.Get(name, skinTone, cback)
+	local uid = name
+	if skinTone and skinTone > 1 then
+		uid = uid .. "_".. skinTone
 	end
-	return file ..".png", dir
-end
+	
+	if list[uid] then
+		cback(list[uid])
+	elseif file.Exists("emoji.lua/_map/".. uid ..".txt", "DATA") then
+		list[uid] = file.Read("emoji.lua/_map/".. uid ..".txt")
+		cback(list[uid])
+	else
+		print("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/map/".. uid ..".txt")
+		http.Fetch("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/map/".. uid ..".txt", function(emoji, _, _, code)
+			if code ~= 200 then return end
 
-function Emoji.GetPath(emoji)
-	return "emoji.lua/".. emoji)
-end
-
-function Emoji.GetURL(emoji)
-	return "https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/map/".. emoji ..".png"
-end
-
--- same args as in Emoji.GetPath, but with callback (on success downloading)
-function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
-	local emoji, dir = Emoji.Get(name, provider, size, skinTone)
-	local path = Emoji.GetPath(emoji)
-
-	if file.Exists(path) then
-		cback(path)
-		return path
+			file.Write("emoji.lua/_map/".. uid ..".txt", emoji)
+			list[uid] = emoji
+			cback(emoji)
+		end)
 	end
-
-	local function download(isRetry)
-		if isRetry then
-	        if retry_count and retry_count > 0 then
-	            retry_count = retry_count - 1
-	            download(true)
-	        end
-	    else
-	    	file.CreateDir(dir)
-			http.Fetch(Emoji.GetURL(emoji), function(img, _, _, code)
-				if code ~= 200 or img:find("<!DOCTYPE HTML>", 1, true) then
-					download(true)
-				else
-					file.Write(path, img)
-					cback(path)
-				end
-			end, download)
-	    end
-	end
-
-	download()
-	return path
 end
 
--- same args as in Emoji.Get
-function Emoji.IsDownloaded(name, provider, size, skinTone)
-	local emoji, dir = Emoji.Get(name, provider, size, skinTone)
-	return file.Exists(Emoji.GetPath(emoji))
-end
-
--- same args as in Emoji.Download
-function Emoji.GetMaterial(name, provider, size, skinTone, cback, retry_count)
-	return Emoji.Download(name, provider, size, skinTone, function(path)
-		cback(Material(path))
-	end, retry_count)
-end
-
-local downloading = {}
-function Emoji.Render(x, y, name, provider, size, skinTone)
-	if downloading == true then return end
-	downloading = true
-
-	Emoji.GetMaterial(name, provider, size, skinTone, function(mat)
-		downloading = false
-
-		surface.SetDrawColor(255, 255, 255)
-        	surface.SetMaterial(mat)
-        	surface.DrawTexturedRect(16, 16, 64, 64)
+function Emoji.GetPath(name, provider, size, skinTone, cback)  -- Emoji.GetPath("thumbsup", "twitter", 64, 4, print)
+	Emoji.Get(name, skinTone, function(emoji)
+		local upath = provider .."-".. size .."/".. emoji ..".png"
+		cback("emoji.lua/".. upath, upath)
 	end)
 end
 
-return Emoji
+function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
+	Emoji.GetPath(name, provider, size, skinTone, function(path, upath)
+		if file.Exists(path, "DATA") then
+			cback(path)
+			return
+		end
+
+		local function download(isRetry)
+			if isRetry then
+		        if retry_count and retry_count > 0 then
+		            retry_count = retry_count - 1
+		            download(true)
+		        end
+		    else
+		    	print("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/" .. upath)
+				http.Fetch("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/".. upath, function(img, _, _, code)
+					if code ~= 200 or img:find("<!DOCTYPE HTML>", 1, true) then
+						download(true)
+					else
+						file.Write(path, img)
+						cback(path)
+					end
+				end, download)
+		    end
+		end
+
+		download()
+	end)
+end
+
+function Emoji.IsDownloaded(name, provider, size, skinTone, cback)
+	Emoji.GetPath(name, provider, size, skinTone, function(path)
+		cback(file.Exists(path))
+	end)
+end
+
+function Emoji.GetMaterial(name, provider, size, skinTone, cback, retry_count)
+	return Emoji.Download(name, provider, size, skinTone, function(path)
+		cback(Material("data/".. path))
+	end, retry_count)
+end
+
+--[[ Example:
+Emoji.GetMaterial("thumbsup", "twitter", 64, math.random(0, 6), function(mat)
+    hook.Add("HUDPaint", "Thumbsup-emoji", function()
+        surface.SetDrawColor(255, 255, 255)
+        surface.SetMaterial(mat)
+        surface.DrawTexturedRect(16, 16, 64, 64)
+    end)
+end)
+]]--
