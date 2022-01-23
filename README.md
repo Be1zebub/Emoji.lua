@@ -7,7 +7,7 @@
 | name | string | "thumbsup" |  |
 | provider | string | "twitter" |  |
 | size | number | 64 |  |
-| callback | function(material) |  |
+| callback | function(material) DrawMaterial(material) end |  |
 | skinTone | number | 3 | ✔ |
 | retryCount | number | 2 | ✔ |
 ```lua
