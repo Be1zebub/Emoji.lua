@@ -140,8 +140,8 @@ end, math.random(0, 6))
 
 hook.Add("HUDPaint", "Emoji.png/test2", function()
 	surface.SetDrawColor(255, 255, 255)
-	Emoji.SetMaterial("smile", "apple", 64)
-	surface.DrawTexturedRect(16, 96, 64, 64)
+	Emoji.SetMaterial("smile", "apple", 160)
+	surface.DrawTexturedRect(16, 96, 160, 160)
 end)
 
 local skins = {}
