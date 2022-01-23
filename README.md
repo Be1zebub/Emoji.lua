@@ -1,8 +1,9 @@
 # Emoji.lua - a way to add emotions in your Gmod UI
 
-### Emoji.GetMaterial
+### Example
 
 ```lua
+local Emoji = include("lib/emoji.lua")
 Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     hook.Add("HUDPaint", "Thumbsup-emoji", function()
         surface.SetDrawColor(255, 255, 255)
