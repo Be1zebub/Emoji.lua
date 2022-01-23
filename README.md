@@ -52,4 +52,8 @@ end, math.random(0, 6))
 ```lua
 Emoji.SetMaterial("couple", "twitter", 64, 9)
 ```
-![skin-tones mix preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/twitter-64/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.png)
+![skin-tones mix preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/twitter-64/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.png)  
+
+###### todo:
+- [ ] zwj support
+- [ ] noto emoji support
