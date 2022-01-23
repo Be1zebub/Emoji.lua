@@ -101,26 +101,26 @@ function Emoji.IsDownloaded(name, provider, size, skinTone, cback)
 	end)
 end
 
-function Emoji.GetMaterial(name, provider, size, skinTone, cback, retryCount)
+function Emoji.GetMaterial(name, provider, size, cback, skinTone, retryCount)
 	return Emoji.Download(name, provider, size, skinTone, function(path)
 		cback(Material("data/".. path))
 	end, retryCount)
 end
 
 --[[ Examples:
-Emoji.GetMaterial("thumbsup", "twitter", 64, math.random(0, 6), function(mat)
+Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
     hook.Add("HUDPaint", "Thumbsup-emoji", function()
         surface.SetDrawColor(255, 255, 255)
         surface.SetMaterial(mat)
         surface.DrawTexturedRect(16, 16, 64, 64)
-    end)
+    en, math.random(0, 6))
 end)
 
 local skins = {}
 for skinTone = 0, 6 do
-	Emoji.GetMaterial("muscle", "twitter", 64, skinTone, function(mat)
+	Emoji.GetMaterial("muscle", "twitter", 72, function(mat)
 		skins[skinTone] = mat
-	end)
+	end, skinTone)
 end
 
 local skinTone = -1
@@ -131,7 +131,7 @@ timer.Create("Emoji.png/test", 0.25, 0, function()
 
     local pnl = vgui.Create("EditablePanel")
     pnl:SetPos(16, 16)
-    pnl:SetSize(64, 64)
+    pnl:SetSize(72, 72)
     pnl.Paint = function(me, w, h)
     	surface.SetDrawColor(255, 255, 255)
 	    surface.SetMaterial(mat)
