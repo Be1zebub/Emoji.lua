@@ -1,6 +1,5 @@
 local Emoji = {
 	_VERSION = 1.0,
-	_Async   = true,
 	_URL 	 = "https://github.com/Be1zebub/Emoji.lua",
 	_LICENSE = [[
 		MIT LICENSE
