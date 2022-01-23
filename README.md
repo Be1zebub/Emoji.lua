@@ -1,4 +1,4 @@
-# Emoji.lua - a way to add emotions in your gmod ui
+# Emoji.lua - a way to add emotions in your Gmod UI
 
 ### Emoji.GetMaterial
 ```lua
