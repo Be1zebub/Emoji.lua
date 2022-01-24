@@ -127,13 +127,17 @@ end
 return Emoji
 
 --[[ Examples:
+-- async example
+
 Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
 	hook.Add("HUDPaint", "Emoji.png/test1", function()
 		surface.SetDrawColor(255, 255, 255)
 		surface.SetMaterial(mat)
 		surface.DrawTexturedRect(16, 16, 64, 64)
-	en)
+	end)
 end, math.random(0, 6))
+
+--- sync example
 
 hook.Add("HUDPaint", "Emoji.png/test2", function()
 	surface.SetDrawColor(255, 255, 255)
@@ -141,21 +145,24 @@ hook.Add("HUDPaint", "Emoji.png/test2", function()
 	surface.DrawTexturedRect(16, 96, 160, 160)
 end)
 
+---- async example 2
+
 local skins = {}
+local skinTone = -1
+
 for skinTone = 0, 6 do
 	Emoji.GetMaterial("muscle", "twitter", 72, function(mat)
 		skins[skinTone] = mat
 	end, skinTone)
 end
 
-local skinTone = -1
 timer.Create("Emoji.png/test3", 0.25, 0, function()
 	skinTone = skinTone + 1
 	local mat = skins[skinTone]
 	if mat == nil then skinTone = -1 return end
-
+	
 	local pnl = vgui.Create("EditablePanel")
-	pnl:SetPos(16, 16)
+	pnl:SetPos(96, 16)
 	pnl:SetSize(72, 72)
 	pnl.Paint = function(me, w, h)
 		surface.SetDrawColor(255, 255, 255)
