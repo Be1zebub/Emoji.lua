@@ -46,7 +46,6 @@ function Emoji.Get(name, skinTone, cback)
 		list[uid] = file.Read("emoji.lua/_map/".. uid ..".txt")
 		cback(list[uid])
 	else
-		print("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/map/".. uid ..".txt")
 		http.Fetch("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/map/".. uid ..".txt", function(emoji, _, _, code)
 			if code ~= 200 then return end
 
@@ -78,7 +77,6 @@ function Emoji.Download(name, provider, size, skinTone, cback, retry_count)
 					download(true)
 				end
 			else
-				print("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/" .. upath)
 				http.Fetch("https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/".. upath, function(img, _, _, code)
 					if code ~= 200 or img:find("<!DOCTYPE HTML>", 1, true) then
 						download(true)
