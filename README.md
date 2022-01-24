@@ -8,6 +8,9 @@
 > Any combination of skin tones  
 > Various emoji providers with different sizes (Twitter, Facebook, Apple, Google)
 
+#### How it looks in game:
+![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/ingame.png)  
+
 ### Emoji.SetMaterial (Sync)
 
 ```lua
@@ -46,7 +49,7 @@ end, math.random(0, 6))
 | retryCount | number | ✔ |
 
 ### Skin-tones preview
-![skin-tones Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/skinTonesPreview.png)  
+![skin-tones Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/skin_tones.png)  
 *you can also mix skin-tones of some emojis*
 *example:*
 ```lua
