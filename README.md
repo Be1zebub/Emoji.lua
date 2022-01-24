@@ -60,3 +60,5 @@ Emoji.SetMaterial("couple", "twitter", 64, 9)
 ###### todo:
 - [ ] zwj support
 - [ ] noto emoji support
+- [ ] joypixels (aka emojione) emoji support
+- [ ] windows (10 & 11) emoji support
