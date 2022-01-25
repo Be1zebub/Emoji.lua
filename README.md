@@ -1,4 +1,5 @@
 # Emoji.lua - a way to add emotions in your Gmod UI
+<img alt="Visitors" src="https://visitor-badge.laobi.icu/badge?page_id=Be1zebub.Emoji.lua"/> 
 
 #### Features:
 > The entire library is in one short file you only need to download 1 lua file   
