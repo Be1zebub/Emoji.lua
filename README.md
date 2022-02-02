@@ -59,10 +59,10 @@ Emoji.SetMaterial("couple", "twitter", 64, 9)
 
 ### Credits
 
-Twitter Emoji: Copyright © Twitter, Inc. - v13.1
-Apple Emoji: Copyright © Apple Inc. - macOS 11.4 Big Sur (20F71)
-Google Emoji: Copyright © The Android Open Source Project - v2020-09-16-unicode13_1
-Facebook Emoji: Copyright © Facebook, Inc. - v9, fetched 2020-10-08 (no 13.1 support)
+Twitter Emoji: Copyright © Twitter, Inc. - v13.1  
+Apple Emoji: Copyright © Apple Inc. - macOS 11.4 Big Sur (20F71)  
+Google Emoji: Copyright © The Android Open Source Project - v2020-09-16-unicode13_1  
+Facebook Emoji: Copyright © Facebook, Inc. - v9, fetched 2020-10-08 (no 13.1 support)  
 
 ###### todo:
 - [ ] zwj support
