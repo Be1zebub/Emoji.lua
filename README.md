@@ -57,6 +57,13 @@ Emoji.SetMaterial("couple", "twitter", 64, 9)
 ```
 ![skin-tones mix preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/twitter-64/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.png)  
 
+### Credits
+
+Twitter Emoji: Copyright © Twitter, Inc. - v13.1
+Apple Emoji: Copyright © Apple Inc. - macOS 11.4 Big Sur (20F71)
+Google Emoji: Copyright © The Android Open Source Project - v2020-09-16-unicode13_1
+Facebook Emoji: Copyright © Facebook, Inc. - v9, fetched 2020-10-08 (no 13.1 support)
+
 ###### todo:
 - [ ] zwj support
 - [ ] noto emoji support
