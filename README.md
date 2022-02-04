@@ -10,6 +10,7 @@
 
 #### How it looks in game:
 ![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/ingame.png)  
+![Preview in practice](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/in_practice.png)  
 
 ### Emoji.SetMaterial (Sync)
 
