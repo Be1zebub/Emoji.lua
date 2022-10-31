@@ -10,8 +10,7 @@
 > Custom emoji support  
 
 #### How it looks in game:
-![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/ingame.png)  
-![Preview in practice](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/in_practice.png)  
+![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/master/preview.jpg)  
 
 ### Documentation:
 
