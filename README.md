@@ -12,6 +12,9 @@
 #### How it looks in game:
 ![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/master/preview.jpg)  
 
+### Installation:
+apt install wget -y && wget https://raw.githubusercontent.com/Be1zebub/Emoji.lua/master/init.lua garrysmod/addons/your_addon/lua/lib/emoji.lua
+
 ### Documentation:
 
 Please visit this project's [Wiki](https://github.com/Be1zebub/Emoji.lua/wiki) for documentation and tutorials.
