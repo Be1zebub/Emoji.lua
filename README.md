@@ -1,74 +1,31 @@
-# Emoji.lua - a way to add emotions in your Gmod UI
+# Emoji.lua - a way to add emotions in your Gmod UI (or anywhere else)
 
 #### Features:
-> The entire library is in one short file you only need to download 1 lua file   
-> Content downloading only on request (your players dont need to download a lot of useless emojis that they will never see)  
+> Single file lib, no dependencies.
+> Content downloading by request (your players dont need to download a lot of useless emojis that they will never see)  
 > Comfy receipt of emojis by name (as in discord / Twitter)  
-> Synchronous and asynchronous functions  
-> Any combination of skin tones  
-> Various emoji providers with different sizes (Twitter, Facebook, Apple, Google)
+> Alot of emoji providers (Twitter, Fluent, Noto, Joypixels, Facebook, Apple, Google)
+> Skin tones support
+> ZWJ support
+> Custom emoji support
+> Great api, 
 
 #### How it looks in game:
 ![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/ingame.png)  
 ![Preview in practice](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/in_practice.png)  
 
-### Emoji.SetMaterial (Sync)
+### Documentation:
 
-```lua
-hook.Add("HUDPaint", "Emoji.lua/test/Emoji.SetMaterial", function()
-	surface.SetDrawColor(255, 255, 255)
-	Emoji.SetMaterial("smile", "apple", 160)
-	surface.DrawTexturedRect(16, 96, 160, 160)
-end)
-```
-| Parameter | Type | Optional |
-|-|-|:-:|
-| name | string |  |
-| provider | string |  |
-| size | number |  |
-| skinTone | number | ✔ |
+Please visit this project's [Wiki](https://github.com/Be1zebub/Emoji.lua/wiki) for documentation and tutorials.
 
-
-### Emoji.GetMaterial (Async)
-
-```lua
-Emoji.GetMaterial("thumbsup", "twitter", 64, function(mat)
-    hook.Add("HUDPaint", "Emoji.lua/test/Emoji.GetMaterial", function()
-        surface.SetDrawColor(255, 255, 255)
-        surface.SetMaterial(mat)
-        surface.DrawTexturedRect(16, 16, 64, 64)
-    end)
-end, math.random(0, 6))
-```
-| Parameter | Type | Optional |
-|-|-|:-:|
-| name | string |  |
-| provider | string |  |
-| size | number |  |
-| callback | function |  |
-| skinTone | number | ✔ |
-| retryCount | number | ✔ |
-
-### Skin-tones preview
-![skin-tones Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/skin_tones.png)  
-*you can also mix skin-tones of some emojis*
-*example:*
-```lua
-Emoji.SetMaterial("couple", "twitter", 64, 9)
-```
-![skin-tones mix preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/emoji/twitter-64/1f469-1f3fb-200d-1f91d-200d-1f468-1f3fd.png)  
-
-### Credits
+### Credits:
 
 Twitter Emoji: Copyright © Twitter, Inc. - v13.1  
 Apple Emoji: Copyright © Apple Inc. - macOS 11.4 Big Sur (20F71)  
 Google Emoji: Copyright © The Android Open Source Project - v2020-09-16-unicode13_1  
 Facebook Emoji: Copyright © Facebook, Inc. - v9, fetched 2020-10-08 (no 13.1 support)  
-
-###### todo:
-- [ ] zwj support
-- [ ] noto emoji support
-- [ ] joypixels (aka emojione) emoji support
-- [ ] windows (10 & 11) emoji support
+Fluent Emoji: Copyright © Microsoft, Corp. - fetched 2022-10-31
+Noto Emoji: Copyright © Google, LLC - v15.0, fetched 2022-10-31
+Joypixels Emoji: Copyright © Joypixels, Inc. - v7.0.1, fetched 2022-10-31
 
 <img alt="Visitors" src="https://visitor-badge.laobi.icu/badge?page_id=Be1zebub.Emoji.lua"/> 
