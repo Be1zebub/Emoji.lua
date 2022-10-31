@@ -343,7 +343,14 @@ end
 
 function Emoji:Debug()
 	surface.CreateFont("Emoji.lua", {
-		size = 24,
+		size = 20,
+		font = "Roboto",
+		extended = true,
+		antialias = true
+	})
+
+	surface.CreateFont("Emoji.lua/Entry", {
+		size = 16,
 		font = "Roboto",
 		extended = true,
 		antialias = true
@@ -411,6 +418,7 @@ function Emoji:Debug()
 		entry:SetTall(32)
 		entry:SetTextColor(Color(235, 235, 235))
 		entry:SetCursorColor(Color(220, 220, 220))
+		entry:SetFont("Emoji.lua/Entry")
 		entry.OnEnter = function(me)
 			scroll:AddText(me:GetValue())
 		end

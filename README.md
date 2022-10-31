@@ -4,11 +4,10 @@
 > Single file lib, no dependencies.
 > Content downloading by request (your players dont need to download a lot of useless emojis that they will never see)  
 > Comfy receipt of emojis by name (as in discord / Twitter)  
-> Alot of emoji providers (Twitter, Fluent, Noto, Joypixels, Facebook, Apple, Google)
-> Skin tones support
-> ZWJ support
-> Custom emoji support
-> Great api, 
+> Alot of emoji providers (Twitter, Fluent, Noto, Joypixels, Facebook, Apple, Google)  
+> Skin tones support  
+> ZWJ support  
+> Custom emoji support  
 
 #### How it looks in game:
 ![Preview](https://raw.githubusercontent.com/Be1zebub/Emoji.lua/main/preview/ingame.png)  
