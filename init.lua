@@ -120,11 +120,15 @@ do
 	if gmod then
 		function Emoji:Material(assetPack, flags)
 			local running = coroutine.running()
-			local path = self:Path(assetPack)
+			local path ="emoji.lua/".. self:Path(assetPack)
 
-			ReadOrFetch(path, self:URL(assetPack), function()
-				coroutine.resume(running, Material("data/".. path, flags or "smooth mips"))
-			end)
+			local mat
+			if ReadOrFetch(path, self:URL(assetPack), function()
+				mat = Material("data/".. path, flags or "smooth mips")
+				coroutine.resume(running, mat)
+			end) then
+				return mat
+			end
 
 			return coroutine.yield()
 		end
@@ -155,7 +159,7 @@ do
 		local emoji = self.aliases[alias:gsub(":", "")]
 
 		if emoji then
-			emoji = lib.Emoji(emoji, parent)
+			emoji = lib.Emoji(emoji, self)
 		end
 
 		return emoji
@@ -324,7 +328,7 @@ do
 			menu:SetSize(440, 300)
 			menu:Center()
 			menu:MakePopup()
-			menu:SetTitle("Emoji.lua v".. (math.floor(self._VERSION) == self._VERSION and self._VERSION ..".0" or self._VERSION))
+			menu:SetTitle("Emoji.lua v".. (math.floor(lib._VERSION) == lib._VERSION and lib._VERSION ..".0" or lib._VERSION))
 			menu:DockPadding(11, 26 + 11, 11, 11)
 			menu.Paint = function(me, w, h)
 				surface.SetDrawColor(54, 57, 63)
@@ -386,6 +390,8 @@ do
 			scroll:AddText(":hmm: hmm, seems good :very_dovolen:")
 		end)()
 	end
+
+	--lib.Debug()
 end
 
 --—————————————————— Emoji helpers ——————————————————--
